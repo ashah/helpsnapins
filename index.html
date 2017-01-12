@@ -57,10 +57,10 @@ window.onbeforeunload = function (){
 }
 window.onload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
-	if (storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY")){
+	if (storageIframe.sessionStorage.getItem("CHASITOR_SERIALIZED_KEY")){
 	keys = ["CHASITOR_SERIALIZED_KEY", "ESW_MINIMIZED_WIDTH", "LA_ESW_MINIMIZED", "LA_ESW_UNREAD_NOTIFS", "LA_ESW_MINIMIZED_TEXT"]
     	keys.forEach(function(key){
-       		sessionStorage.setItem(key, storageIframe.getSessionData(key));
+       		window.sessionStorage.setItem(key, storageIframe.sessionStorage.getItem(key));
     	});
 	}
 }
