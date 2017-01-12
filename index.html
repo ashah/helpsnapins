@@ -42,7 +42,7 @@ iframe.src = 'http://websnapins.com/storage.html';
 iframe.id = 'storage_iframe';
 iframe.style.display = 'none';
 document.body.appendChild(iframe);
-	
+document.domain = 'websnapins.com';
 window.onbeforeunload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
     storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", liveagent.chasitor.serialize());
