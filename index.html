@@ -46,7 +46,7 @@ document.body.appendChild(iframe);
 document.domain = 'websnapins.com';
 window.onbeforeunload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
-    storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", liveagent.chasitor.serialize());
+    storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", window.sessionStorage.getItem("CHASITOR_SERIALIZED_KEY"));
     storageIframe.storeSessionData("ESW_MINIMIZED_WIDTH", window.sessionStorage.getItem("ESW_MINIMIZED_WIDTH"));
     storageIframe.storeSessionData("LA_ESW_MINIMIZED", window.sessionStorage.getItem('LA_ESW_MINIMIZED'));
     storageIframe.storeSessionData("LA_ESW_UNREAD_NOTIFS", window.sessionStorage.getItem('LA_ESW_UNREAD_NOTIFS'));
