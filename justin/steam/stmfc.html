@@ -95,6 +95,9 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		// Debug
+		embedded_svc.settings.devMode = true;
+
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com', 
 			'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili', 
@@ -113,7 +116,7 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { 
