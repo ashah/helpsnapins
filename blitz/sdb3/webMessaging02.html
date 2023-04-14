@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>WEB MESSAGING 02 | SDB3 BLITZ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+		<h1>WebMessaging 02 | SDB3 BLITZ | help.websnapins.com </h1>
+		<h2>agent2@sdb3.blitz.org</h2>
+
+		<!-- Edit page link -->
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		</br>
+		<!-- Clear user session button -->
+		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+		
+		<script type='text/javascript'>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+			
+			function clearAuthSession() {
+				console.log("Clearing user session.");
+				embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			}
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				// Embedded Messaging app ready
+				console.log("onEmbeddedMessagingReady emitted");
+				
+				// KID #5 - subject: tiffanytest
+				// https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=tiffanytest&jwtExpInSeconds=6000&keyId=addf6f51-5815-482b-b8af-9fbe60dd558e
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+					identityTokenType: "JWT",
+					identityToken: "eyJraWQiOiJhZGRmNmY1MS01ODE1LTQ4MmItYjhhZi05ZmJlNjBkZDU1OGUiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGlmZmFueXRlc3QiLCJleHAiOjE2NzQwNzQ0NjUsImlhdCI6MTY3NDA2ODQ2NX0.YPcOTxBiK9A0jt_DqykwL4fCVkNtfgGzCw11zrMCOE9QKWBztooNdbB0SkrmuXafqcqXG2kHrZoWVoFtB5E2PhuR-_ljYAdciQsq84RhkhwkgenpkxR0h1Mcxwcya1MHJL2TKv3UQ9mmVk-Rl6EJDSWB71gVDylXPXJucaajtdEu6ZWVdA_QkBNGolUo0lZ6w9LXwKY1LyqnreCmq3HTabXGVjeahLT0tzFE-mR1SqvotipbKKUeed3lmLbexH9FEiNAmffq-cCEPQ-69Kt8O1MivjiEE9c3B5VuAmWqYH7ovRkP9gLhz58m9TLblmdLDKvDaurfqDS-U5LxyezGQw"
+				});
+				
+				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+				    "userName" : "Guest",
+				    "cartValue": "1000"
+				});
+			});
+		</script>
+		
+		<!-- Snippet -->
+		<script type='text/javascript'>
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+					embeddedservice_bootstrap.settings.devMode = true;
+
+					embeddedservice_bootstrap.init(
+						'00DSB0000005YCL',
+						'webMessaging02',
+						'https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging021674063680178',
+						{
+							scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+						}
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
+		</script>
+		<script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging021674063680178/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	</body>
+</html>
